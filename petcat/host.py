@@ -1,17 +1,12 @@
 import socket
-host = "127.0.0.1"
-port = 12345
-ss = socket.socket()
-ss.bind((host,port))
-ss.listen()
-cs, addr = server.accept()
-print ("Connection from: " + str(addr))
+my_socket = socket.socket()      # Create a socket object
+# my_host = socket.gethostname()
+my_host = "0.0.0.0"
+my_port = 6969# Store a port for your service.
+my_socket.bind((my_host, my_port))
+my_socket.listen(5)      # Now wait for client connection.
 while True:
-   data = cs.recv(1024).decode()
-   if not data:
-      break
-   print ("from connected user: " + str(data))
-   print ("Received from User: " + str(data))
-   data = input("type message: ")
-   conn.send(data.encode())
-cs.close()
+   cl, myaddr = my_socket.accept()     # Establish connection with client.
+   print ('Got connection from', myaddr)
+   cl.send('Thank you for connecting')
+   cl.close()     # Close the connection

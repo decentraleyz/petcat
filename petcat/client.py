@@ -1,12 +1,7 @@
-import socket
-host = '127.0.0.1'
-port = 12345
-obj = socket.socket()
-obj.connect((host,port))
-message = input("type message: ")
-while message != 'q':
-   obj.send(message.encode())
-   data = obj.recv(1024).decode()
-   print ('Received from server: ' + data)
-   message = input("type message: ")
-obj.close()
+import socket      # Import socket module
+my_socket = socket.socket()      # Create a socket object
+my_host = "127.0.0.1"
+my_port = 6969# Store a port for your service.
+my_socket.connect((my_host, my_port))
+print (my_socket.recv(1024))
+my_socket.close
